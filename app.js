@@ -27,7 +27,7 @@ app.set('view engine', 'handlebars');
 
 //connects to the server with Mongo DB vilent
 
-mongoose.connect ('mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.qdt3y.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true},() => console.log('Connected to database...'));
+mongoose.connect ('mongodb+srv://jazzy:12345@cluster0.qdt3y.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true},() => console.log('Connected to database...'));
 
  var db = mongoose.connection;
  db.on('error', console.error.bind(console, 'MongoDB connection error:'));
