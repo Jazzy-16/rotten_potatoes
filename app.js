@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 const Handlebars = require('handlebars');
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const app = express();
@@ -26,7 +27,7 @@ app.set('view engine', 'handlebars');
 
 //connects to the server with Mongo DB vilent
 
-mongoose.connect ('mongodb+srv://jazzy:12345@cluster0.qdt3y.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true},() => console.log('Connected to database...'));
+mongoose.connect ('mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.qdt3y.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true},() => console.log('Connected to database...'));
 
  var db = mongoose.connection;
  db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -50,6 +51,6 @@ mongoose.connect ('mongodb+srv://jazzy:12345@cluster0.qdt3y.mongodb.net/test', {
   
 
 // define app route
-app.listen(2000, () =>{
-    console.log(`App listening on port 2000!`);
+app.listen(process.env.PORT||3000, () =>{
+    console.log(`App listening on port ${process.env.PORT}!`);
 })
