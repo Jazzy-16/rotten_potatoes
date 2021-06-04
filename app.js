@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const app = express();
 const reviews = require('./controllers/reviews')(app);
+module.exports = app;
 
 // middleware
 var exphbs = require('express-handlebars');
